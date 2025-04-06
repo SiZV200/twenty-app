@@ -1,0 +1,36 @@
+/node_modules
+/.env.local
+/.umirc.local.ts
+/config/config.local.ts
+/src/.umi
+/src/.umi-production
+/src/.umi-test
+/dist
+.swc
+
+# vercel
+.vercel
+
+# typescript
+*.tsbuildinfo
+
+.idea
+.vscode/*
+!.vscode/launch.json
+!.vscode/settings.json
+
+logs/*
+
+.history
+
+install_log.txt
+
+.env.local
+
+app/doc/*
+!app/doc/readme.md
+
+# 忽略本地生成的sitemap文件
+robots.txt
+sitemap.xml
+sitemap-*.xml
