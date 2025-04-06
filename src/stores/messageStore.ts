@@ -17,74 +17,13 @@ interface Message {
 interface MessageState {
   messages: Message[];
   currentMessage: Message | null;
-  /**
-   * 获取消息列表
-   */
-  fetchMessages: () => Promise<void>;
-  /**
-   * 获取消息详情
-   * @param id 消息ID
-   */
-  fetchMessageDetail: (id: string) => Promise<void>;
-  /**
-   * 处理消息点赞
-   * @param id 消息ID
-   */
-  toggleLike: (id: string) => Promise<void>;
+  // TODO: 实现消息列表、消息详情和点赞相关的状态管理方法
 }
 
 /**
  * 消息状态管理store
  */
-export const useMessageStore = create<MessageState>((set, get) => ({
+export const useMessageStore = create<MessageState>(() => ({
   messages: [],
   currentMessage: null,
-
-  fetchMessages: async () => {
-    try {
-      const response = await fetch('/api/messages');
-      const { data } = await response.json();
-      set({ messages: data });
-    } catch (error) {
-      console.error('获取消息列表失败:', error);
-    }
-  },
-
-  fetchMessageDetail: async (id: string) => {
-    try {
-      const response = await fetch(`/api/messages/${id}`);
-      const { data } = await response.json();
-      set({ currentMessage: data });
-
-      // 同步更新列表中的消息状态
-      const { messages } = get();
-      const updatedMessages = messages.map(msg => 
-        msg.id === id ? data : msg
-      );
-      set({ messages: updatedMessages });
-    } catch (error) {
-      console.error('获取消息详情失败:', error);
-    }
-  },
-
-  toggleLike: async (id: string) => {
-    try {
-      const response = await fetch(`/api/messages/${id}/like`, {
-        method: 'POST'
-      });
-      const { data } = await response.json();
-
-      // 同步更新列表和详情的点赞状态
-      const { messages, currentMessage } = get();
-      const updatedMessages = messages.map(msg => 
-        msg.id === id ? data : msg
-      );
-      set({ 
-        messages: updatedMessages,
-        currentMessage: currentMessage?.id === id ? data : currentMessage
-      });
-    } catch (error) {
-      console.error('处理点赞失败:', error);
-    }
-  }
 })); 

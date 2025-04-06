@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { useParams, history } from 'umi';
 import { Card, Button, Space } from 'antd';
 import { LikeOutlined, LikeFilled, ArrowLeftOutlined } from '@ant-design/icons';
@@ -6,36 +6,26 @@ import { useMessageStore } from '@/stores/messageStore';
 
 /**
  * 消息详情页面组件
- * @returns {JSX.Element} 消息详情页面
  */
 const MessageDetailPage: React.FC = () => {
   const { id } = useParams<{ id: string }>();
 
-  // TODO: 实现以下功能
-  // 1. 调用后端API获取消息详情
-  // 2. 实现点赞功能，确保点赞状态能够跨页面同步
-  // 3. 添加页面样式，美化界面（加分项）
-
-  const { currentMessage, fetchMessageDetail, toggleLike } = useMessageStore();
-
-  useEffect(() => {
-    if (id) {
-      fetchMessageDetail(id);
-    }
-  }, [id]);
-
-  /**
-   * 处理消息点赞
-   */
-  const handleLike = () => {
-    if (id) {
-      toggleLike(id);
-    }
+  // 模拟数据，方便开发时查看UI效果
+  const mockMessage = {
+    id: '1',
+    title: '示例消息1',
+    content: '这是一条示例消息的详细内容...',
+    likes: 10,
+    isLiked: false
   };
 
-  /**
-   * 返回列表页
-   */
+  // TODO: 实现消息详情获取和点赞功能
+  const currentMessage = mockMessage;
+
+  const handleLike = () => {
+    // TODO: 实现点赞功能
+  };
+
   const handleBack = () => {
     history.push('/');
   };
