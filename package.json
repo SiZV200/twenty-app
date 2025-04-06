@@ -9,11 +9,14 @@
     "start": "npm run dev"
   },
   "dependencies": {
-    "umi": "^4.4.6"
+    "@ant-design/icons": "^5.2.6",
+    "antd": "^5.11.0",
+    "umi": "^4.0.87",
+    "zustand": "^4.4.6"
   },
   "devDependencies": {
-    "@types/react": "^18.0.33",
-    "@types/react-dom": "^18.0.11",
-    "typescript": "^5.0.3"
+    "@types/react": "^18.2.37",
+    "@types/react-dom": "^18.2.15",
+    "typescript": "^5.2.2"
   }
 }
